@@ -16,4 +16,6 @@ public class Gwiazdozbior {
     public void setListaGwiazd(ArrayList<String> lista) {
         this.listaGwiazd = lista;
     }
+
+
 }
