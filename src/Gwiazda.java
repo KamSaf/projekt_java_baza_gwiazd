@@ -74,6 +74,5 @@ public class Gwiazda {
     public void WczytajZPliku(String sciezka){
     }
 
-    public
 }
 
