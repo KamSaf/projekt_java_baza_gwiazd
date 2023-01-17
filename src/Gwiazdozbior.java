@@ -17,5 +17,6 @@ public class Gwiazdozbior {
         this.listaGwiazd = lista;
     }
 
-
+    public void WczytajZPliku(String sciezka){
+    }
 }

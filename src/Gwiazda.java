@@ -70,9 +70,5 @@ public class Gwiazda {
     public void set_masa(Float masa) {
         this.masa = masa;
     }
-
-    public void WczytajZPliku(String sciezka){
-    }
-
 }
 
