@@ -19,4 +19,8 @@ public class Gwiazdozbior {
 
     public void WczytajZPliku(String sciezka){
     }
+
+    public void ZapiszDoPliku(String sciezka){
+
+    }
 }
