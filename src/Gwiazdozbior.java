@@ -21,6 +21,6 @@ public class Gwiazdozbior {
     }
 
     public void ZapiszDoPliku(String sciezka){
-
+            System.out.println("Funkacja w budowie");
     }
 }
