@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Gwiazda {
     private String nazwa;
     public String getNazwa() {
@@ -57,6 +59,7 @@ public class Gwiazda {
 
     private Gwiazdozbior gwiazdozbior;
     public Gwiazdozbior getGwiazdozbior() {return gwiazdozbior;}
+    public String getNazwaGwiazdozbioru() {return gwiazdozbior.getNazwaGwiazdozbioru();}
     public void setGwiazdozbior(Gwiazdozbior gwiazdozbior) {
         this.gwiazdozbior = gwiazdozbior;
     }
@@ -77,11 +80,11 @@ public class Gwiazda {
         this.temperatura = temperatura;
     }
 
-    private float masa;
-    public Float getMasa() {
+    private double masa;
+    public double getMasa() {
         return masa;
     }
-    public void setMasa(Float masa) {
+    public void setMasa(double masa) {
         this.masa = masa;
     }
 
@@ -105,13 +108,19 @@ public class Gwiazda {
         }
     }
 
-    public Gwiazda(String nazwa, float obserwowanaWielkoscGwiazdowa, float absolutnaWielkoscGwiazdowa, float odleglosc, Gwiazdozbior gwiazdozbior, String polkula, int temperatura, float masa, String deklinacja, String rektascensja){
+    private Gwiazda(String nazwa, float obserwowanaWielkoscGwiazdowa, float odleglosc, Gwiazdozbior gwiazdozbior, String polkula, int temperatura, double masa, String deklinacja, String rektascensja){
         if (Gwiazda.nazwaSprawdzenie(nazwa))
         {
             this.nazwa = nazwa;
         }
         else{
             throw new IllegalArgumentException("Podano błędną nazwę Gwiazdy.");
+        }
+        if (gwiazdozbior == null){
+            throw new IllegalArgumentException("Podano błędną nazwę gwiazdozbioru.");
+        }
+        else{
+            this.gwiazdozbior = gwiazdozbior;
         }
         this.nazwaKatalogowa = ""+gwiazdozbior.getGwiazda(gwiazdozbior.getNumerGwiazdy())+" "+ gwiazdozbior.getNazwaGwiazdozbioru();
         gwiazdozbior.setNumerGwiazdy();
@@ -121,8 +130,8 @@ public class Gwiazda {
         else{
             throw new IllegalArgumentException("Podano błędną obserwowaną wielkość gwiazdową.");
         }
-        this.absolutnaWielkoscGwiazdowa = (float)(this.obserwowanaWielkoscGwiazdowa - 5*Math.log10(this.odleglosc/3.26));
         this.odleglosc = odleglosc;
+        this.absolutnaWielkoscGwiazdowa = (float)(this.obserwowanaWielkoscGwiazdowa - 5*Math.log10(this.odleglosc/3.26));
         if (polkula.equals("PN") || polkula.equals("PD")){
             this.polkula = polkula;
         }
@@ -141,11 +150,17 @@ public class Gwiazda {
         else{
             throw new IllegalArgumentException("Podano błędną masę gwiazdy.");
         }
-        this.gwiazdozbior = gwiazdozbior;
         this.deklinacja = deklinacja;
         this.rektascensja = rektascensja;
+    }
 
+    public void WyswietlDaneGwiazdy(){
+        System.out.println("Nazwa: "+this.getNazwa()+"\n"+"Nazwa Katalogowa: "+this.getNazwaKatalogowa()+"\n"+"Obserwowalna Wielkość Gwiazdowa: "+this.getObserwowanaWielkoscGwiazdowa()+"\n"+"Absolutna wielkość gwiazdowa: "+this.getAbsolutnaWielkoscGwiazdowa()+"\n"+"Odległość: "+this.getOdleglosc()+"\n"+"Gwiazdozbiór: "+this.getNazwaGwiazdozbioru()+"\n"+"Półkula: "+this.getPolkula()+"\n"+"Temperatura: "+this.getTemperatura()+"\n"+"Masa: "+this.getMasa()+"\n"+"Deklinacja: "+this.getDeklinacja()+"\n"+"Rektascensja: "+this.getRektascensja());
 
+    }
+
+    public static void DodajGwiazde(String nazwa, float obserwowanaWielkoscGwiazdowa, float odleglosc, Gwiazdozbior gwiazdozbior, String polkula, int temperatura, double masa, String deklinacja, String rektascensja){
+        gwiazdozbior.DodajDoGwiazdozbioru(new Gwiazda(nazwa, obserwowanaWielkoscGwiazdowa, odleglosc, gwiazdozbior, polkula, temperatura, masa, deklinacja, rektascensja));
     }
 }
 

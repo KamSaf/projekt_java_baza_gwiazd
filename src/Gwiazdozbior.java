@@ -3,6 +3,7 @@ import java.util.ArrayList;
 public class Gwiazdozbior {
     private String nazwaGwiazdozbioru;
     private String gwiazdy = "ΑΒΓΔΕΖΗΘΙΚΛΜΝΞΟΠΡΣΤΥΦΧΨΩ";
+    private ArrayList<Gwiazda> listaGwiazd;
     private int numerGwiazdy = 0;
 
     public String getGwiazdy(){return gwiazdy;}
@@ -16,12 +17,20 @@ public class Gwiazdozbior {
     }
     public void setNazwaGwiazdozbioru(String nazwa) {this.nazwaGwiazdozbioru = nazwa;}
 
-    private ArrayList<String> listaGwiazd;
-    public ArrayList<String> getListaGwiazd() {
+    public ArrayList<Gwiazda> getListaGwiazd() {
         return listaGwiazd;
     }
-    public void setListaGwiazd(ArrayList<String> lista) {
+    public void setListaGwiazd(ArrayList<Gwiazda> lista) {
         this.listaGwiazd = lista;
+    }
+
+    public Gwiazdozbior(String nazwa){
+        this.nazwaGwiazdozbioru = nazwa;
+        this.listaGwiazd = new ArrayList<Gwiazda>();
+    }
+
+    public void DodajDoGwiazdozbioru(Gwiazda g){
+        this.listaGwiazd.add(g);
     }
 
     public void WczytajZPliku(String sciezka){
