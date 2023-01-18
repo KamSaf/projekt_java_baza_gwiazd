@@ -7,6 +7,7 @@ public class Gwiazda {
         this.nazwa = nazwa;
     }
 
+
     private String nazwaKatalogowa;
     public String getNazwaKatalogowa() {
         return nazwaKatalogowa;
@@ -96,7 +97,16 @@ public class Gwiazda {
         }
     }
 
-    public Gwiazda(String nazwa, String nazwaKatalogowa, float obserwowanaWielkoscGwiazdowa, float absolutnaWielkoscGwiazdowa, float odleglosc, Gwiazda gwiazdozbior, String polkula, int temperatura, float masa, Wspolrzedne wspolrzedne){
+    public Gwiazda(String nazwa, float obserwowanaWielkoscGwiazdowa, float absolutnaWielkoscGwiazdowa, float odleglosc, Gwiazdozbior gwiazdozbior, String polkula, int temperatura, float masa, Wspolrzedne wspolrzedne){
+        if (Gwiazda.nazwaSprawdzenie(nazwa))
+        {
+            this.nazwa = nazwa;
+        }
+        else{
+            throw new IllegalArgumentException("Podano błędną nazwę Gwiazdy");
+        }
+        this.nazwaKatalogowa = ""+gwiazdozbior.getGwiazda(gwiazdozbior.getNumerGwiazdy())+" "+ gwiazdozbior.getNazwaGwiazdozbioru();
+        gwiazdozbior.setNumerGwiazdy();
 
     }
 }
