@@ -103,10 +103,35 @@ public class Gwiazda {
             this.nazwa = nazwa;
         }
         else{
-            throw new IllegalArgumentException("Podano błędną nazwę Gwiazdy");
+            throw new IllegalArgumentException("Podano błędną nazwę Gwiazdy.");
         }
         this.nazwaKatalogowa = ""+gwiazdozbior.getGwiazda(gwiazdozbior.getNumerGwiazdy())+" "+ gwiazdozbior.getNazwaGwiazdozbioru();
         gwiazdozbior.setNumerGwiazdy();
+        if (obserwowanaWielkoscGwiazdowa >= -26.74 && obserwowanaWielkoscGwiazdowa < 15){
+            this.obserwowanaWielkoscGwiazdowa = obserwowanaWielkoscGwiazdowa;
+        }
+        else{
+            throw new IllegalArgumentException("Podano błędną obserwowaną wielkość gwiazdową.");
+        }
+        this.odleglosc = odleglosc;
+        if (polkula.equals("PN") || polkula.equals("PD")){
+            this.polkula = polkula;
+        }
+        else{
+            throw new IllegalArgumentException("Podano błędny symbol półkuli.");
+        }
+        if (temperatura > 2000){
+            this.temperatura = temperatura;
+        }
+        else{
+            throw new IllegalArgumentException("Podano za niską temperaturę gwiazdy.");
+        }
+        if (masa >= 0.1 && masa < 50){
+            this.masa = masa;
+        }
+        else{
+            throw new IllegalArgumentException("Podano błędną masę gwiazdy.");
+        }
 
     }
 }
