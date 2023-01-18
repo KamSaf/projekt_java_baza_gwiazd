@@ -109,11 +109,62 @@ public class Gwiazda {
     }
 
     private static boolean SprawdzenieDeklinacja(String deklinacja){
-        return false;
+        String[] podzieloneWartosci = deklinacja.split(" ");
+        int licznikPoprawnychZnakow = 0;
+        if (Integer.parseInt(podzieloneWartosci[0]) > -91 && Integer.parseInt(podzieloneWartosci[0]) < 91){
+            licznikPoprawnychZnakow+=1;
+        }
+        if (Integer.parseInt(podzieloneWartosci[2]) > 0 && Integer.parseInt(podzieloneWartosci[2]) < 61){
+            licznikPoprawnychZnakow+=1;
+        }
+        if (Float.parseFloat(podzieloneWartosci[4]) > 0 && Float.parseFloat(podzieloneWartosci[4]) < 61.00){
+            licznikPoprawnychZnakow+=1;
+        }
+        if (podzieloneWartosci[1].equals("stopni")){
+            licznikPoprawnychZnakow+=1;
+        }
+        if (podzieloneWartosci[3].equals("minut")){
+            licznikPoprawnychZnakow+=1;
+        }
+        if (podzieloneWartosci[5].equals("sekund")){
+            licznikPoprawnychZnakow+=1;
+        }
+        if (licznikPoprawnychZnakow == 6){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 
     private static boolean SprawdzenieRektascensja(String rektascensja){
-        return false;
+        String[] podzieloneWartosci = rektascensja.split(" ");
+        int licznikPoprawnychZnakow = 0;
+        if (Integer.parseInt(podzieloneWartosci[0]) > 0 && Integer.parseInt(podzieloneWartosci[0]) < 25){
+            licznikPoprawnychZnakow+=1;
+        }
+        if (Integer.parseInt(podzieloneWartosci[2]) > 0 && Integer.parseInt(podzieloneWartosci[2]) < 61){
+            licznikPoprawnychZnakow+=1;
+
+        }
+        if (Integer.parseInt(podzieloneWartosci[4]) > 0 && Integer.parseInt(podzieloneWartosci[4]) < 61){
+            licznikPoprawnychZnakow+=1;
+        }
+        if (podzieloneWartosci[1].equals("h")){
+            licznikPoprawnychZnakow+=1;
+        }
+        if (podzieloneWartosci[3].equals("m")){
+            licznikPoprawnychZnakow+=1;
+        }
+        if (podzieloneWartosci[5].equals("s")){
+            licznikPoprawnychZnakow+=1;
+        }
+        if (licznikPoprawnychZnakow == 6){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 
     private Gwiazda(String nazwa, float obserwowanaWielkoscGwiazdowa, float odleglosc, Gwiazdozbior gwiazdozbior,
@@ -141,13 +192,13 @@ public class Gwiazda {
         }
         this.odleglosc = odleglosc;
         this.absolutnaWielkoscGwiazdowa = (float)(this.obserwowanaWielkoscGwiazdowa - 5*Math.log10(this.odleglosc/3.26));
-        if (polkula.equals("PN") || polkula.equals("PD")){
+        if ((polkula.equals("PN") && (int)deklinacja.charAt(0) != 45) || (polkula.equals("PD") && (int)deklinacja.charAt(0) == 45)){
             this.polkula = polkula;
         }
         else{
             throw new IllegalArgumentException("Podano błędny symbol półkuli.");
         }
-        if (temperatura > 2000){
+        if (temperatura >= 2000){
             this.temperatura = temperatura;
         }
         else{
@@ -160,7 +211,18 @@ public class Gwiazda {
             throw new IllegalArgumentException("Podano błędną masę gwiazdy.");
         }
         this.deklinacja = deklinacja;
-        this.rektascensja = rektascensja;
+        if(Gwiazda.SprawdzenieRektascensja(rektascensja)){
+            this.rektascensja = rektascensja;
+        }
+        else{
+            throw new IllegalArgumentException("Podano błędną wartośc rekstascensji.");
+        }
+        if(Gwiazda.SprawdzenieDeklinacja(deklinacja)){
+            this.deklinacja = deklinacja;
+        }
+        else{
+            throw new IllegalArgumentException("Podano błędną wartośc deklinacji.");
+        }
     }
 
     public void WyswietlDaneGwiazdy(){

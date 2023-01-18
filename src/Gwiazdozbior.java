@@ -6,7 +6,6 @@ public class Gwiazdozbior {
     private ArrayList<Gwiazda> listaGwiazd;
     private int numerGwiazdy = 0;
 
-    public String getGwiazdy(){return gwiazdy;}
     public char getGwiazda(int numer){return gwiazdy.charAt(numer);}
 
     public int getNumerGwiazdy(){return numerGwiazdy;}
