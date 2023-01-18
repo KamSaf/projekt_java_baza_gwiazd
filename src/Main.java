@@ -10,7 +10,8 @@ public class Main {
         for (int i=0; i<Rak.getListaGwiazd().size(); i++){
             Rak.getListaGwiazd().get(i).WyswietlDaneGwiazdy();
         }
-        // TODO usuwanie gwiazd,
+        // TODO
+        //  usuwanie gwiazd (z uwzględnieniem nazw katalogowych !!!)
         //  wyswietlanie wszystkich gwiazd w bazie,
         //  wyszukiwanie gwiazd w odległości x parseków od Ziemi  (PARSEKÓW, NIE LAT ŚWIETLNYCH)
         //  wyszukiwanie gwiazd o temperaturze w zadanym przedziale
