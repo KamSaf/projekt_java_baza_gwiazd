@@ -77,6 +77,25 @@ public class Gwiazda {
         this.wspolrzedne = wspolrzedne;
     }
 
+    public static boolean nazwaSprawdzenie(String nazwa){
+        int licznikLiter = 0;
+        int licznikCyfr = 0;
+        for (int i = 0; i<nazwa.length(); i++){
+            if (((int)nazwa.charAt(i) > 64 && (int)nazwa.charAt(i) < 91)){
+                licznikLiter += 1;
+            }
+            else if ((int)nazwa.charAt(i) > 47 && (int)nazwa.charAt(i) < 58){
+                licznikCyfr += 1;
+            }
+        }
+        if (licznikCyfr == 4 && licznikLiter == 3){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
     public Gwiazda(String nazwa, String nazwaKatalogowa, float obserwowanaWielkoscGwiazdowa, float absolutnaWielkoscGwiazdowa, float odleglosc, Gwiazda gwiazdozbior, String polkula, int temperatura, float masa, Wspolrzedne wspolrzedne){
 
     }
