@@ -1,74 +1,84 @@
 public class Gwiazda {
     private String nazwa;
-    public String get_nazwa() {
+    public String getNazwa() {
         return nazwa;
     }
-    public void set_nazwa(String nazwa) {
+    public void setNazwa(String nazwa) {
         this.nazwa = nazwa;
     }
 
     private String nazwaKatalogowa;
-    public String get_nazwaKatalogowa() {
+    public String getNazwaKatalogowa() {
         return nazwaKatalogowa;
     }
-    public void set_nazwaKatalogowa(String nazwa) {
+    public void setNazwaKatalogowa(String nazwa) {
         this.nazwaKatalogowa = nazwa;
     }
 
     private float obserwowanaWielkoscGwiazdowa;
-    public float get_obserwowanaWielkoscGwiazdowa() {
+    public float getObserwowanaWielkoscGwiazdowa() {
         return obserwowanaWielkoscGwiazdowa;
     }
-    public void set_obserwowanaWielkoscGwiazdowa(float wielkosc) {
+    public void setObserwowanaWielkoscGwiazdowa(float wielkosc) {
         this.obserwowanaWielkoscGwiazdowa = wielkosc;
     }
 
     private float absolutnaWielkoscGwiazdowa;
-    public float get_absolutnaWielkoscGwiazdowa() {
+    public float getAbsolutnaWielkoscGwiazdowa() {
         return absolutnaWielkoscGwiazdowa;
     }
-    public void set_absolutnaWielkoscGwiazdowa(float wielkosc) {
+    public void setAbsolutnaWielkoscGwiazdowa(float wielkosc) {
         this.absolutnaWielkoscGwiazdowa = wielkosc;
     }
 
     private float odleglosc;
-    public float get_odleglosc() {
+    public float getOdleglosc() {
         return odleglosc;
     }
-    public void set_odleglosc(float odleglosc) {
+    public void setOdleglosc(float odleglosc) {
         this.odleglosc = odleglosc;
     }
 
-    private String gwiazdozbior;
-    public String get_gwiazdozbior() {
-        return gwiazdozbior;
-    }
-    public void set_gwiazdozbior(String gwiazdozbior) {
+    private Gwiazdozbior gwiazdozbior;
+    public Gwiazdozbior getGwiazdozbior() {return gwiazdozbior;}
+    public void setGwiazdozbior(Gwiazdozbior gwiazdozbior) {
         this.gwiazdozbior = gwiazdozbior;
     }
 
     private String polkula;
-    public String get_polkula() {
+    public String getPolkula() {
         return polkula;
     }
-    public void set_polkula(String polkula) {
+    public void setPolkula(String polkula) {
         this.polkula = polkula;
     }
 
     private int temperatura;
-    public Integer get_temperatura() {
+    public Integer getTemperatura() {
         return temperatura;
     }
-    public void set_temperatura(int temperatura) {
+    public void setTemperatura(int temperatura) {
         this.temperatura = temperatura;
     }
 
     private float masa;
-    public Float get_masa() {
+    public Float getMasa() {
         return masa;
     }
-    public void set_masa(Float masa) {
+    public void setMasa(Float masa) {
         this.masa = masa;
+    }
+
+    private Wspolrzedne wspolrzedne;
+    public Wspolrzedne getWspolrzedne() {
+        return wspolrzedne;
+    }
+    public void setWspolrzedne(Wspolrzedne wspolrzedne) {
+        this.wspolrzedne = wspolrzedne;
+    }
+
+    public Gwiazda(String nazwa, String nazwaKatalogowa, float obserwowanaWielkoscGwiazdowa, float absolutnaWielkoscGwiazdowa, float odleglosc, Gwiazda gwiazdozbior, String polkula, int temperatura, float masa, Wspolrzedne wspolrzedne){
+
     }
 }
 
