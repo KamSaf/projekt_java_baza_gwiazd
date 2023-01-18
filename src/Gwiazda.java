@@ -7,13 +7,28 @@ public class Gwiazda {
         this.nazwa = nazwa;
     }
 
-
     private String nazwaKatalogowa;
     public String getNazwaKatalogowa() {
         return nazwaKatalogowa;
     }
     public void setNazwaKatalogowa(String nazwa) {
         this.nazwaKatalogowa = nazwa;
+    }
+
+    private String deklinacja;
+    public String getDeklinacja() {
+        return deklinacja;
+    }
+    public void setDeklinacja(String deklinacja) {
+        this.deklinacja = deklinacja;
+    }
+
+    private String rektascensja;
+    public String getRektascensja() {
+        return rektascensja;
+    }
+    public void setRektascensja(String rektascensja) {
+        this.rektascensja = rektascensja;
     }
 
     private float obserwowanaWielkoscGwiazdowa;
@@ -97,7 +112,7 @@ public class Gwiazda {
         }
     }
 
-    public Gwiazda(String nazwa, float obserwowanaWielkoscGwiazdowa, float absolutnaWielkoscGwiazdowa, float odleglosc, Gwiazdozbior gwiazdozbior, String polkula, int temperatura, float masa, Wspolrzedne wspolrzedne){
+    public Gwiazda(String nazwa, float obserwowanaWielkoscGwiazdowa, float absolutnaWielkoscGwiazdowa, float odleglosc, Gwiazdozbior gwiazdozbior, String polkula, int temperatura, float masa, String deklinacja, String rektascensja){
         if (Gwiazda.nazwaSprawdzenie(nazwa))
         {
             this.nazwa = nazwa;
@@ -113,6 +128,7 @@ public class Gwiazda {
         else{
             throw new IllegalArgumentException("Podano błędną obserwowaną wielkość gwiazdową.");
         }
+        this.absolutnaWielkoscGwiazdowa = (float)(this.obserwowanaWielkoscGwiazdowa - 5*Math.log10(this.odleglosc/3.26));
         this.odleglosc = odleglosc;
         if (polkula.equals("PN") || polkula.equals("PD")){
             this.polkula = polkula;
@@ -132,6 +148,10 @@ public class Gwiazda {
         else{
             throw new IllegalArgumentException("Podano błędną masę gwiazdy.");
         }
+        this.gwiazdozbior = gwiazdozbior;
+        this.deklinacja = deklinacja;
+        this.rektascensja = rektascensja;
+
 
     }
 }

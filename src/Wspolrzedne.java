@@ -14,4 +14,6 @@ public class Wspolrzedne {
     public void setRektascensja(String rektascensja) {
         this.rektascensja = rektascensja;
     }
+
+    //ostatecznie klasa nie została wykorzystana
 }
