@@ -89,7 +89,7 @@ public class Gwiazda {
     }
 
 
-    public static boolean nazwaSprawdzenie(String nazwa){
+    private static boolean nazwaSprawdzenie(String nazwa){
         int licznikLiter = 0;
         int licznikCyfr = 0;
         for (int i = 0; i<nazwa.length(); i++){
@@ -108,7 +108,16 @@ public class Gwiazda {
         }
     }
 
-    private Gwiazda(String nazwa, float obserwowanaWielkoscGwiazdowa, float odleglosc, Gwiazdozbior gwiazdozbior, String polkula, int temperatura, double masa, String deklinacja, String rektascensja){
+    private static boolean SprawdzenieDeklinacja(String deklinacja){
+        return false;
+    }
+
+    private static boolean SprawdzenieRektascensja(String rektascensja){
+        return false;
+    }
+
+    private Gwiazda(String nazwa, float obserwowanaWielkoscGwiazdowa, float odleglosc, Gwiazdozbior gwiazdozbior,
+                    String polkula, int temperatura, double masa, String deklinacja, String rektascensja){
         if (Gwiazda.nazwaSprawdzenie(nazwa))
         {
             this.nazwa = nazwa;
@@ -155,11 +164,16 @@ public class Gwiazda {
     }
 
     public void WyswietlDaneGwiazdy(){
-        System.out.println("Nazwa: "+this.getNazwa()+"\n"+"Nazwa Katalogowa: "+this.getNazwaKatalogowa()+"\n"+"Obserwowalna Wielkość Gwiazdowa: "+this.getObserwowanaWielkoscGwiazdowa()+"\n"+"Absolutna wielkość gwiazdowa: "+this.getAbsolutnaWielkoscGwiazdowa()+"\n"+"Odległość: "+this.getOdleglosc()+"\n"+"Gwiazdozbiór: "+this.getNazwaGwiazdozbioru()+"\n"+"Półkula: "+this.getPolkula()+"\n"+"Temperatura: "+this.getTemperatura()+"\n"+"Masa: "+this.getMasa()+"\n"+"Deklinacja: "+this.getDeklinacja()+"\n"+"Rektascensja: "+this.getRektascensja());
+        System.out.println("Nazwa: "+this.getNazwa()+"\n"+"Nazwa Katalogowa: "+this.getNazwaKatalogowa()+"\n"+
+                "Obserwowalna Wielkość Gwiazdowa: "+this.getObserwowanaWielkoscGwiazdowa()+"\n"+"Absolutna wielkość gwiazdowa: "+
+                this.getAbsolutnaWielkoscGwiazdowa()+"\n"+"Odległość: "+this.getOdleglosc()+"\n"+"Gwiazdozbiór: "+this.getNazwaGwiazdozbioru()+"\n"+
+                "Półkula: "+this.getPolkula()+"\n"+"Temperatura: "+this.getTemperatura()+"\n"+"Masa: "+this.getMasa()+"\n"+"Deklinacja: "+
+                this.getDeklinacja()+"\n"+"Rektascensja: "+this.getRektascensja()+"\n");
 
     }
 
-    public static void DodajGwiazde(String nazwa, float obserwowanaWielkoscGwiazdowa, float odleglosc, Gwiazdozbior gwiazdozbior, String polkula, int temperatura, double masa, String deklinacja, String rektascensja){
+    public static void DodajGwiazde(String nazwa, float obserwowanaWielkoscGwiazdowa, float odleglosc,
+                                    Gwiazdozbior gwiazdozbior, String polkula, int temperatura, double masa, String deklinacja, String rektascensja){
         gwiazdozbior.DodajDoGwiazdozbioru(new Gwiazda(nazwa, obserwowanaWielkoscGwiazdowa, odleglosc, gwiazdozbior, polkula, temperatura, masa, deklinacja, rektascensja));
     }
 }
