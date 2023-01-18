@@ -85,13 +85,6 @@ public class Gwiazda {
         this.masa = masa;
     }
 
-    private Wspolrzedne wspolrzedne;
-    public Wspolrzedne getWspolrzedne() {
-        return wspolrzedne;
-    }
-    public void setWspolrzedne(Wspolrzedne wspolrzedne) {
-        this.wspolrzedne = wspolrzedne;
-    }
 
     public static boolean nazwaSprawdzenie(String nazwa){
         int licznikLiter = 0;
