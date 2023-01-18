@@ -10,6 +10,14 @@ public class Main {
         for (int i=0; i<Rak.getListaGwiazd().size(); i++){
             Rak.getListaGwiazd().get(i).WyswietlDaneGwiazdy();
         }
+        // TODO usuwanie gwiazd,
+        //  wyswietlanie wszystkich gwiazd w bazie,
+        //  wyszukiwanie gwiazd w odległości x parseków od Ziemi  (PARSEKÓW, NIE LAT ŚWIETLNYCH)
+        //  wyszukiwanie gwiazd o temperaturze w zadanym przedziale
+        //  wyszukiwanie gwiazd o wielkości gwiazdowej w zadanym przedziale
+        //  wyszukiwanie gwiazd z półkuli północnej/południowej
+        //  wyszukiwanie potencjalnych supernowych (masa przekracza 1.44 masy Słońca)
+        //  zapis i odczyt z pliku obiektowego
     }
 }
 
