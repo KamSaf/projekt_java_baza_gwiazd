@@ -19,12 +19,14 @@ public class Gwiazdozbior {
     public ArrayList<Integer> getListaGwiazd() {
         return listaGwiazd;
     }
-    //public void setListaGwiazd(ArrayList<Integer> lista) {this.listaGwiazd = lista;}
+    public void setListaGwiazd(ArrayList<Integer> lista) {this.listaGwiazd = lista;}
 
     public Gwiazdozbior(String nazwa){ // Konstruktor
         this.nazwaGwiazdozbioru = nazwa;
         this.listaGwiazd = new ArrayList<Integer>();
     }
+
+
 
     public void DodajDoGwiazdozbioru(Integer indeks){this.listaGwiazd.add(indeks);}   //Metoda dodająca indeks gwiazdy z pola Gwiazda.instancja do gwiazdozbioru
 
@@ -33,6 +35,6 @@ public class Gwiazdozbior {
     }
 
     public void ZapiszDoPliku(String sciezka){
-            System.out.println("Funkacja w budowie");
+        System.out.println("Funkacja w budowie");
     }
 }

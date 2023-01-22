@@ -244,9 +244,5 @@ public class Gwiazda {
     }
 
 
-
-
-
-
 }
 
