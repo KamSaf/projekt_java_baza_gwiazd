@@ -1,6 +1,8 @@
 import java.util.ArrayList;
 
 public class Gwiazda {
+    private static ArrayList<Gwiazda> instancje  = new ArrayList<Gwiazda>();
+    public static ArrayList<Gwiazda> getInstancje(){ return instancje;}
     private String nazwa;
     public String getNazwa() {
         return nazwa;
@@ -89,7 +91,7 @@ public class Gwiazda {
     }
 
 
-    private static boolean nazwaSprawdzenie(String nazwa){
+    private static boolean nazwaSprawdzenie(String nazwa){ //Metoda sprawdzjąca poprawność wprowadzonej nazwy gwiazdy
         int licznikLiter = 0;
         int licznikCyfr = 0;
         for (int i = 0; i<nazwa.length(); i++){
@@ -108,7 +110,7 @@ public class Gwiazda {
         }
     }
 
-    private static boolean SprawdzenieDeklinacja(String deklinacja){
+    private static boolean SprawdzenieDeklinacja(String deklinacja){    //Metoda sprawdzjąca poprawność oraz format wprowadzonych parametrów deklinacji
         String[] podzieloneWartosci = deklinacja.split(" ");
         int licznikPoprawnychZnakow = 0;
         if (Integer.parseInt(podzieloneWartosci[0]) > -91 && Integer.parseInt(podzieloneWartosci[0]) < 91){
@@ -137,7 +139,7 @@ public class Gwiazda {
         }
     }
 
-    private static boolean SprawdzenieRektascensja(String rektascensja){
+    private static boolean SprawdzenieRektascensja(String rektascensja){    //Metoda sprawdzjąca poprawność oraz format wprowadzonych parametrów rekstascensji
         String[] podzieloneWartosci = rektascensja.split(" ");
         int licznikPoprawnychZnakow = 0;
         if (Integer.parseInt(podzieloneWartosci[0]) > 0 && Integer.parseInt(podzieloneWartosci[0]) < 25){
@@ -167,7 +169,7 @@ public class Gwiazda {
         }
     }
 
-    private Gwiazda(String nazwa, float obserwowanaWielkoscGwiazdowa, float odleglosc, Gwiazdozbior gwiazdozbior,
+    private Gwiazda(String nazwa, float obserwowanaWielkoscGwiazdowa, float odleglosc, Gwiazdozbior gwiazdozbior, // Konstruktor sprawdzający poprawność wprowadzonych danych, wyrzucający wyjątek w przypadku błędnych danych
                     String polkula, int temperatura, double masa, String deklinacja, String rektascensja){
         if (Gwiazda.nazwaSprawdzenie(nazwa))
         {
@@ -225,7 +227,7 @@ public class Gwiazda {
         }
     }
 
-    public void WyswietlDaneGwiazdy(){
+    public void WyswietlDaneGwiazdy(){ // Metoda wyświetlająca wszystkie dane wybanej gwiazdy
         System.out.println("Nazwa: "+this.getNazwa()+"\n"+"Nazwa Katalogowa: "+this.getNazwaKatalogowa()+"\n"+
                 "Obserwowalna Wielkość Gwiazdowa: "+this.getObserwowanaWielkoscGwiazdowa()+"\n"+"Absolutna wielkość gwiazdowa: "+
                 this.getAbsolutnaWielkoscGwiazdowa()+"\n"+"Odległość: "+this.getOdleglosc()+"\n"+"Gwiazdozbiór: "+this.getNazwaGwiazdozbioru()+"\n"+
@@ -234,9 +236,17 @@ public class Gwiazda {
 
     }
 
-    public static void DodajGwiazde(String nazwa, float obserwowanaWielkoscGwiazdowa, float odleglosc,
+    public static void DodajGwiazde(String nazwa, float obserwowanaWielkoscGwiazdowa, float odleglosc, // Metoda tworząca obiekt klasy Gwiazda, dodająca go do pola instancje oraz przypisująca go do gwiazdozbioru
                                     Gwiazdozbior gwiazdozbior, String polkula, int temperatura, double masa, String deklinacja, String rektascensja){
-        gwiazdozbior.DodajDoGwiazdozbioru(new Gwiazda(nazwa, obserwowanaWielkoscGwiazdowa, odleglosc, gwiazdozbior, polkula, temperatura, masa, deklinacja, rektascensja));
+        //gwiazdozbior.DodajDoGwiazdozbioru(new Gwiazda(nazwa, obserwowanaWielkoscGwiazdowa, odleglosc, gwiazdozbior, polkula, temperatura, masa, deklinacja, rektascensja)); stara wersja
+        Gwiazda.instancje.add(new Gwiazda(nazwa, obserwowanaWielkoscGwiazdowa, odleglosc, gwiazdozbior, polkula, temperatura, masa, deklinacja, rektascensja));
+        gwiazdozbior.DodajDoGwiazdozbioru(Gwiazda.instancje.size()-1);
     }
+
+
+
+
+
+
 }
 
