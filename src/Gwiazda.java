@@ -243,6 +243,62 @@ public class Gwiazda {
         gwiazdozbior.DodajDoGwiazdozbioru(Gwiazda.instancje.size()-1);
     }
 
+    public static void UsunGwiazde(String DanaNazwaKatalogowa){ // Metoda usuwająca z bazy gwiazdę o podanej nazwie katalogowej, usuwająca ją z gwiazdozbioru oraz aktualizująca pozostałe nazwy katalogowe w gwiazdozbiorze
+        for (int i=0; i< instancje.size(); i++){
+            if (instancje.get(i).getNazwaKatalogowa().equals(DanaNazwaKatalogowa)){
+                instancje.get(i).getGwiazdozbior().UsunIndeks(i);
+                instancje.get(i).getGwiazdozbior().AktualizujNazwy();
+                instancje.set(i, null);
+                break;
+            }
+        }
+    }
 
+    public static void WyswietlWszystkieGwiazdy(){	// Metoda wyświetlająca wszystkie gwiazdy w bazie
+        for (int i = 0; i<instancje.size(); i++){
+            if(Gwiazda.getInstancje().get(i) != null){
+                Gwiazda.getInstancje().get(i).WyswietlDaneGwiazdy();
+            }
+        }
+    }
+
+    public static void GwiazdyDanaOdleglosc(double danaOdleglosc){ // Metoda wyświetlająca wszystkie gwiazdy w podanej odległości od Ziemi
+        for (int i = 0; i<instancje.size(); i++){
+            if (Gwiazda.getInstancje().get(i) != null && ((double)Gwiazda.getInstancje().get(i).getOdleglosc())/3.26 <= danaOdleglosc)
+                Gwiazda.getInstancje().get(i).WyswietlDaneGwiazdy();
+        }
+    }
+
+
+    public static void GwiazdyDanaTemperatura(int dolnaGranica, int gornaGranica ){ // Metoda wyświetlająca wszystkie gwiazdy w danym przedziale temperatury
+        for (int i = 0; i<instancje.size(); i++){
+            if (Gwiazda.getInstancje().get(i) != null && Gwiazda.getInstancje().get(i).getTemperatura() >= dolnaGranica && Gwiazda.getInstancje().get(i).getTemperatura() <= gornaGranica)
+                Gwiazda.getInstancje().get(i).WyswietlDaneGwiazdy();
+        }
+    }
+
+
+    public static void GwiazdyDanaWielkosc(int dolnaGranica, int gornaGranica ){ // Metoda wyświetlająca wszystkie gwiazdy w danym przedziale wielkosci
+        for (int i = 0; i<instancje.size(); i++){
+            if (Gwiazda.getInstancje().get(i) != null && Gwiazda.getInstancje().get(i).getObserwowanaWielkoscGwiazdowa() >= dolnaGranica && Gwiazda.getInstancje().get(i).getObserwowanaWielkoscGwiazdowa() <= gornaGranica)
+                Gwiazda.getInstancje().get(i).WyswietlDaneGwiazdy();
+        }
+    }
+
+
+    public static void GwiazdyDanaPolkula(String danaPolkula){ // Metoda wyświetlająca wszystkie gwiazdy z danej półkuli Ziemi
+        for (int i = 0; i<instancje.size(); i++){
+            if (Gwiazda.getInstancje().get(i) != null && Gwiazda.getInstancje().get(i).getPolkula().equals(danaPolkula))
+                Gwiazda.getInstancje().get(i).WyswietlDaneGwiazdy();
+        }
+    }
+
+
+    public static void PotencjalnaSupernowa(){ // Metoda wyświetlająca wszystkie gwiazdy, które mogą być potencjalnymi supernowymi
+        for (int i = 0; i<instancje.size(); i++){
+            if (Gwiazda.getInstancje().get(i) != null && Gwiazda.getInstancje().get(i).getMasa() > 1.44)
+                Gwiazda.getInstancje().get(i).WyswietlDaneGwiazdy();
+        }
+    }
 }
 

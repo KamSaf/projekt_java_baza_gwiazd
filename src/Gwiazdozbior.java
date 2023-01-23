@@ -37,4 +37,26 @@ public class Gwiazdozbior {
     public void ZapiszDoPliku(String sciezka){
         System.out.println("Funkacja w budowie");
     }
+
+    public void AktualizujNazwy(){  // Metoda aktualizująca nazwy katalogowe gwiazd po usunięciu gwiazdy
+        this.numerGwiazdy = 0;
+        for (int i=0; i<listaGwiazd.size(); i++) {
+            Gwiazda.getInstancje().get(listaGwiazd.get(i)).setNazwaKatalogowa("" + this.getGwiazda(this.numerGwiazdy) + " " + this.nazwaGwiazdozbioru);
+            setNumerGwiazdy();
+        }
+    }
+
+    public void UsunIndeks(Integer indeks){ // Metoda usuwająca indeks gwiazdy z listy gwiazd gwiazdozbioru
+        for (int i=0; i<listaGwiazd.size(); i++){
+            if (listaGwiazd.get(i) == indeks){
+                listaGwiazd.remove(i);
+            }
+        }
+    }
+
+    public void WyswietlWszystkieGwiazdy(){	// Metoda wyświetlająca wszystkie gwiazdy w gwiazdozbiorze
+        for (int i = 0; i<this.listaGwiazd.size(); i++){
+            Gwiazda.getInstancje().get(listaGwiazd.get(i)).WyswietlDaneGwiazdy();
+        }
+    }
 }
