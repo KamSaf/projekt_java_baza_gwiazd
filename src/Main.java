@@ -10,9 +10,9 @@ public class Main {
         Gwiazda.DodajGwiazde("XS897A1", 13, 256, Rak, "PD", 3456, 2.5, "-12 stopni 16 minut 51.91 sekund", "04 h 28 m 57 s");
         Gwiazda.DodajGwiazde("FQ513B3", 14, 300, MalyWoz, "PN", 3456, 2.5, "12 stopni 16 minut 51.91 sekund", "04 h 28 m 57 s");
         Rak.WyswietlWszystkieGwiazdy();
-        Rak.UsunIndeks(1);
-        Rak.AktualizujNazwy();
+        Gwiazda.UsunGwiazde("Β Rak");
         Rak.WyswietlWszystkieGwiazdy();
+        Gwiazda.PotencjalnaSupernowa();
     }
 }
 
